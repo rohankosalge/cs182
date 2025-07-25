@@ -57,7 +57,7 @@ There were 4 parts:
 
 
 ## Homework 3
-**I implemented two models: a basic LM derived from RNN/LSTM layers, and a vanilla Transformer aimed at summarizing text. I also toyed with Knowledge Distillation.**
+**I implemented two models: a basic LM derived from RNN/LSTM layers, and a vanilla Transformer aimed at summarizing text. I also toyed with Knowledge Distillation.**<br>
 *Lectures covered: 11-13*<br>
 *Time Spent: ~8 hours*<br>
 

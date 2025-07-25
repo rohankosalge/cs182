@@ -62,5 +62,20 @@ There were 4 parts:
 
 There were 2 parts + 1 experimental, extra credit part:
 - Language Modeling
+	- batch tokenization + numerization
+	- implemented a basic Language Model pipeline, achieving a validation loss well below benchmark of 5.50.
+	- sampling from model to generate headlines from training distribution
 - Summarization
+	- implemented the 5 main blocks of the Transformer, following the original [paper](https://arxiv.org/pdf/1706.03762) (Vaswani et al. / NeurIPS 2017)
+		- AttentionQKV
+		- Multi-Head Attention
+		- Position Embedding
+		- Transformer Encoder / Transformer Decoder
+		- Transformer, building off of the previous pieces
+	- I had watched this [video] (https://www.youtube.com/watch?v=kCc8FmEb1nY) before the project, but referred to it again to gain some intuition (Andrej Karpathy / YouTube)
+	- tuned hyperparameters to train this vanilla Transformer on summarization task, achieving a validation loss of 5.07, well below benchmark of 6.50.
+	- observed text generation from trained model
 - Knowledge Distillation [EC]
+	- implemented transformer distillation to transfer knowledge from a teacher network to a student network, reading this [paper](https://arxiv.org/pdf/1909.10351) (Jiao et al. / EMNLP 2020) entirely
+	- calculated total loss from embedding layer, attention + hidden layers, and prediction layer.
+	- it was addressed at the top of this notebook that it "is not guaranteed to work correctly". Indeed, I had trouble moving forward with training a BERT model from here, but at least was able to observe the computation of the TinyBERT.

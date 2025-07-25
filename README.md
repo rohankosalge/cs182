@@ -57,6 +57,7 @@ There were 4 parts:
 
 
 ## Homework 3
+**I implemented two models: a basic LM derived from RNN/LSTM layers, and a vanilla Transformer aimed at summarizing text. I also toyed with Knowledge Distillation.**
 *Lectures covered: 11-13*<br>
 *Time Spent: ~8 hours*<br>
 
@@ -72,7 +73,7 @@ There were 2 parts + 1 experimental, extra credit part:
 		- Position Embedding
 		- Transformer Encoder / Transformer Decoder
 		- Transformer, building off of the previous pieces
-	- I had watched this [video] (https://www.youtube.com/watch?v=kCc8FmEb1nY) before the project, but referred to it again to gain some intuition (Andrej Karpathy / YouTube)
+	- I had watched this [video](https://www.youtube.com/watch?v=kCc8FmEb1nY) before the project, but referred to it again to gain some intuition (Andrej Karpathy / YouTube)
 	- tuned hyperparameters to train this vanilla Transformer on summarization task, achieving a validation loss of 5.07, well below benchmark of 6.50.
 	- observed text generation from trained model
 - Knowledge Distillation [EC]

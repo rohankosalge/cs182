@@ -1,5 +1,4 @@
-# CS W182/282A Self-Study
-## May - July 2025
+# CS W182/282A Self-Study, May - July 2025
 
 In this [course](https://cs182sp21.github.io/), I had the opportunity to:
 - read several papers throughout the history of deep learning (from AlexNet to the Transformer, to the GAN, MAML, and more)
@@ -9,9 +8,10 @@ In this [course](https://cs182sp21.github.io/), I had the opportunity to:
 Note: Homework 4 is not listed here. I was unable to install the necessary requirements for the RL-based assignment, as several modules/frameworks, including Python/Mac OS itself, have evolved in the last 4 years. I plan to resolve this issue in the near future.<br>
 
 ## Homework 1
-**From scratch, I implemented the forward/backward passes for the layers of a FCNN and CNN. I also familiarized myself with the PyTorch API for the last part.**
-*Lectures covered: 1-7*
+**From scratch, I implemented the forward/backward passes for the layers of a FCNN and CNN. I also familiarized myself with the PyTorch API for the last part.**<br>
+*Lectures covered: 1-7*<br>
 *Time Spent: ~25 hours*<br>
+
 There were 5 parts:
 - FullyConnectedNets
 	- affine layers
@@ -34,9 +34,10 @@ There were 5 parts:
 
 
 ## Homework 2
-**In similar fashion, I implemented the layers of a vanilla RNN and LSTM, testing my models on the [Microsoft COCO Dataset](https://www.mscoco.org).**
-*Lectures covered: 8-10*
-*Time Spent: ~20 hours*
+**In similar fashion, I implemented the layers of a vanilla RNN and LSTM, testing my models on the [Microsoft COCO Dataset](https://www.mscoco.org).**<br>
+*Lectures covered: 8-10*<br>
+*Time Spent: ~20 hours*<br>
+
 There were 4 parts:
 - RNN_Captioning
 	- RNN step layers
@@ -56,8 +57,9 @@ There were 4 parts:
 
 
 ## Homework 3
-*Lectures covered: 11-13*
-*Time Spent: ~8 hours*
+*Lectures covered: 11-13*<br>
+*Time Spent: ~8 hours*<br>
+
 There were 2 parts + 1 experimental, extra credit part:
 - Language Modeling
 - Summarization

@@ -23,7 +23,7 @@ class AttentionLayerLoss(nn.Module):
     # Take the MSE loss between the student and teacher attention.
     # To simplify calculations, remember that E[E[X|Y]] = E[X].
     teacher_attn.detach_()
-    loss = 
+    loss = th.mean((student_attn - teacher_attn) ** 2) # simple MSE
     return loss
     ####################################  END OF YOUR CODE  ##################################
 
@@ -49,8 +49,9 @@ class HiddenLayerLoss(nn.Module):
         # then take the MSE loss between the student and teacher hidden layer outputs.
         # To simplify calculations, remember that E[E[X|Y]] = E[X].
         teacher_hddn.detach_()
-        proj_student = 
-        loss = 
+        # Remember: L_hidn = MSE(H^S @ W_h, H^T)
+        proj_student = self.proj(student_hddn)
+        loss = th.mean((proj_student - teacher_hddn) ** 2)
         return loss
         ####################################  END OF YOUR CODE  ##################################
 
@@ -75,8 +76,9 @@ class EmbeddingLayerLoss(nn.Module):
         # Then take their MSE loss.
         # To simplify calculations, remember that E[E[X|Y]] = E[X].
         teacher_embd.detach_()
-        proj_student = 
-        loss = 
+        # Same as HiddenLayerLoss. L_embd = MSE(E^S @ W_e, E^T)
+        proj_student = self.proj(student_embd)
+        loss = th.mean((proj_student - teacher_embd) ** 2)
         return loss
         ####################################  END OF YOUR CODE  ##################################
     
@@ -101,9 +103,11 @@ class PredictionLoss(nn.Module):
         # The F.softmax and F.log_softmax will be helpful here
         # Also keep in mind that the last dimension of the prediction is the feature dimension.
         teacher_pred.detach_()
-        target_terms = 
-        pred_terms = 
-        samplewise_sce = 
+        # Remember: L_pred = CE(z^S / t, z^T / t)
+        # So predicted distribution is the student, true labels are the teacher
+        target_terms = F.softmax(teacher_pred / t, dim=1) # raw probs for label
+        pred_terms = F.log_softmax(student_pred / t, dim=1) # log probs for predicted distribution
+        samplewise_sce = -(target_terms * pred_terms).sum(dim=1)
         mean_sce = samplewise_sce.mean()
         return mean_sce
         ####################################  END OF YOUR CODE  ##################################
@@ -134,7 +138,7 @@ class KnowledgeDistillationLoss(nn.Module):
               hidden_states : the output of each encoder block for each sample,
               logits : the prediction logits for each sample.
             }
-            :param student_embd: Dictionary with same structure as teacher_out
+            :param student_out: Dictionary with same structure as teacher_out
 
             :return: loss: Tensor with shape [1,]
         """
@@ -143,25 +147,30 @@ class KnowledgeDistillationLoss(nn.Module):
         # Since the student will likely have less intermediate encoder blocks than the teacher,
         # there needs to be a mapping between teacher and student blocks. 
         
+
         # take the loss for the embedding
         embedding_loss = self.embedding_loss(teacher_out['embeddings'],student_out['embeddings'])
-        
+
         # apply the loss from each attention and hidden layer based on the layer mapping
-        attention_loss = 0
-        hidden_loss = 0
+        attention_loss = 0.0
+        hidden_loss = 0.0
         for st_i,te_i in enumerate(self.layer_mapping):
             attn_fn = self.__getattr__(f"attention_loss{st_i}")
-            attention_loss += 
+            teacher_attn = teacher_out['attentions'][te_i]
+            student_attn = student_out['attentions'][st_i]
+            attention_loss += attn_fn(teacher_attn, student_attn)
             hddn_fn = self.__getattr__(f"hidden_loss{st_i}")
-            hidden_loss += 
+            teacher_hidden = teacher_out['hidden_states'][te_i]
+            student_hidden = student_out['hidden_states'][st_i]
+            hidden_loss += hddn_fn(teacher_hidden, student_hidden)
             
         # sum up the loss for each layer
-        loss = 
+        loss = embedding_loss + attention_loss + hidden_loss
         
         # apply the prediction penalty during task distillation
         if penalize_prediction:
-            prediction_loss = 
-            loss += 
+            prediction_loss = self.prediction_loss(teacher_out['logits'], student_out['logits'])
+            loss += prediction_loss
         return loss
         ####################################  END OF YOUR CODE  ##################################
         

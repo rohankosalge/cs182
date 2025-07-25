@@ -7,9 +7,8 @@ In this [course](https://cs182sp21.github.io/), I had the opportunity to:
 
 Note: Homework 4 is not listed here. I was unable to install the necessary requirements for the RL-based assignment, as several modules/frameworks, including Python/Mac OS itself, have evolved in the last 4 years. I plan to resolve this issue in the near future.<br>
 
-## Homework 1
+## Homework 1 (Lectures 1-7)
 **From scratch, I implemented the forward/backward passes for the layers of a FCNN and CNN. I also familiarized myself with the PyTorch API for the last part.**<br>
-*Lectures covered: 1-7*<br>
 *Time Spent: ~25 hours*<br>
 
 There were 5 parts:
@@ -33,9 +32,8 @@ There were 5 parts:
 	- on the open-ended challenge on CIFAR-10, I achieved a 77.11% accuracy against a benchmark accuracy of 70%.
 
 
-## Homework 2
+## Homework 2 (Lectures 8-10)
 **In similar fashion, I implemented the layers of a vanilla RNN and LSTM, testing my models on the [Microsoft COCO Dataset](https://www.mscoco.org).**<br>
-*Lectures covered: 8-10*<br>
 *Time Spent: ~20 hours*<br>
 
 There were 4 parts:
@@ -56,9 +54,8 @@ There were 4 parts:
 	- reconstructed image from learned feature representation (feature inversion)
 
 
-## Homework 3
+## Homework 3 (Lectures 11-13)
 **I implemented two models: a basic LM derived from RNN/LSTM layers, and a vanilla Transformer aimed at summarizing text. I also toyed with Knowledge Distillation.**<br>
-*Lectures covered: 11-13*<br>
 *Time Spent: ~8 hours*<br>
 
 There were 2 parts + 1 experimental, extra credit part:

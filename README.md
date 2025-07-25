@@ -44,7 +44,7 @@ There were 4 parts:
 - LSTM_Captioning
 	- LSTM step layers + embedding layers, same as RNN
 	- the backprop method was trickier to implement, referred to this [source](https://kartik2112.medium.com/lstm-back-propagation-behind-the-scenes-andrew-ng-style-notations-7207b8606cb2) (Kartik Shenoy / Medium)
-	- as part of the extra credit portion, I implemented an LSTM model to perform image captioning on COCO, achieving a BLEU score of ____ against a benchmark BLEU score of 0.3.
+	- as part of the extra credit portion, I implemented an LSTM model to perform image captioning on COCO. Results are subpar at the moment, benchmark BLEU score is 0.3.
 - NetworkVisualization
 	- visualized saliency maps
 	- generated fooling images, following this [paper](https://arxiv.org/pdf/1312.6199) (Szegedy et al. / ICLR 2014)

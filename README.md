@@ -64,7 +64,7 @@ There were 2 parts + 1 experimental, extra credit part:
 	- implemented a basic Language Model pipeline, achieving a validation loss well below benchmark of 5.50.
 	- sampling from model to generate headlines from training distribution
 - Summarization
-	- implemented the 5 main blocks of the Transformer, following the original [paper](https://arxiv.org/pdf/1706.03762) (Vaswani et al. / NeurIPS 2017)
+	- implemented the Transformer, following the original [paper](https://arxiv.org/pdf/1706.03762) (Vaswani et al. / NeurIPS 2017)
 		- AttentionQKV
 		- Multi-Head Attention
 		- Position Embedding
